@@ -9,9 +9,9 @@ const Destinations = ({ isAmharic }) => {
   const [showMore, setShowMore] = useState(false);
 
   const localDestinations = [
-    { name: isAmharic ? 'አዲስ አበባ' : 'Addis Ababa', image: '/images/addis.png' },
-    { name: isAmharic ? 'ላሊበላ' : 'Lalibela', image: '/images/lalibela.png' },
-    { name: isAmharic ? 'አክሱም' : 'Axum', image: '/images/axum.png' },
+    { name: isAmharic ? 'አዲስ አበባ' : 'Addis Ababa', image: 'https://images.unsplash.com/photo-1584782860282-a37e27c8deb8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80' },
+    { name: isAmharic ? 'ላሊበላ' : 'Lalibela', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80' },
+    { name: isAmharic ? 'አክሱም' : 'Axum', image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80' },
     { name: isAmharic ? 'ጎንደር' : 'Gondar', image: 'https://images.unsplash.com/photo-1590083948608-525d75ee5edb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80' },
   ];
 
@@ -29,10 +29,10 @@ const Destinations = ({ isAmharic }) => {
   ];
 
   const moreLocalDestinations = [
-    { name: isAmharic ? 'ባህር ዳር' : 'Bahir Dar', image: '/images/Bahirdar.png' },
-    { name: isAmharic ? 'ሐረር' : 'Harar', image: '/images/harar.png' },
-    { name: isAmharic ? 'አርባ ምንጭ' : 'Arba Minch', image: '/images/arbaminch.png' },
-    { name: isAmharic ? 'ጅማ' : 'Jimma', image: '/images/jimma.png' },
+    { name: isAmharic ? 'ባህር ዳር' : 'Bahir Dar', image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80' },
+    { name: isAmharic ? 'ሐረር' : 'Harar', image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80' },
+    { name: isAmharic ? 'አርባ ምንጭ' : 'Arba Minch', image: 'https://images.unsplash.com/photo-1508009603885-50cf7c579365?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80' },
+    { name: isAmharic ? 'ጅማ' : 'Jimma', image: 'https://images.unsplash.com/photo-1500595046891-ef6a9a8c4eaf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80' },
   ];
 
   const initialDestinations = isLocal ? localDestinations : internationalDestinations.slice(0, 4);

@@ -47,14 +47,14 @@ const Index = ({ isAmharic }) => {
   };
 
   const carouselImages = [
-    '/images/travels/IMG_0513.JPG',
-    '/images/travels/IMG_1079.JPG',
-    '/images/travels/IMG_1080.JPG',
-    '/images/travels/IMG_7489.JPG',
-    '/images/travels/IMG_7619.JPG',
-    '/images/travels/IMG_7828.JPG',
-    '/images/travels/IMG_7846.JPG',
-    '/images/travels/IMG_7858.JPG',
+    'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
+    'https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
+    'https://images.unsplash.com/photo-1500595046891-ef6a9a8c4eaf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
+    'https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
+    'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
+    'https://images.unsplash.com/photo-1488479671046-b282c2b3e753?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
+    'https://images.unsplash.com/photo-1537225228614-56cc3556d7ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
   ];
 
   const internationalDestinations = [
