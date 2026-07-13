@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { PlaneIcon, HotelIcon, GlobeIcon, UmbrellaIcon, MapIcon, CameraIcon } from 'lucide-react';
+import { PlaneIcon, HotelIcon, GlobeIcon, UmbrellaIcon, MapIcon, CameraIcon, StethoscopeIcon } from 'lucide-react';
 
 const Services = ({ isAmharic }) => {
   const [selectedService, setSelectedService] = useState(null);
@@ -71,6 +71,17 @@ const Services = ({ isAmharic }) => {
         ? 'የእኛ ልምድ ያላቸው ባለሙያዎች ለእርስዎ የጉዞ እቅዶች ምክር ይሰጣሉ። ጉዞዎን ቀላል እና ደስታ የተሞላ እናደርገዋለን። ከቪዛ መረጃ እስከ የአካባቢ ባህል እና ልማዶች፣ እንዲሁም የጉዞ ምክሮች እና ጥቆማዎች፣ እርስዎን ለጉዞዎ በሚገባ እናዘጋጃለን። የእርስዎን ፍላጎቶች እና በጀት ግምት ውስጥ በማስገባት ግላዊ የሆነ የጉዞ እቅድ እናዘጋጃለን። ከመነሻ እስከ መድረሻ፣ በእያንዳንዱ ደረጃ ላይ እንረዳዎታለን።'
         : "Our experienced professionals offer advice for your travel plans. We make your journey easy and enjoyable. From visa information to local customs and traditions, as well as travel tips and recommendations, we'll prepare you thoroughly for your trip. We create personalized itineraries taking into account your interests and budget. Our team provides support at every stage, from planning to your return home. We're here to answer all your travel-related questions and ensure you have a smooth, enjoyable trip.",
       image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    },
+    {
+      icon: <StethoscopeIcon className="h-6 w-6" />,
+      title: isAmharic ? 'የህክምና ጉዞ' : 'Medical Travel',
+      shortDescription: isAmharic
+        ? 'ለህክምና፣ ለምርመራ እና ለጤንነት አገልግሎቶች የሚደረጉ ጉዞዎችን እናመቻቻለን።'
+        : "We facilitate travel for medical treatments, checkups, and wellness procedures.",
+      longDescription: isAmharic
+        ? 'በዓለም ዙሪያ ካሉ ከፍተኛ ጥራት ያላቸው ሆስፒታሎች እና የህክምና ባለሙያዎች ጋር በመተባበር የህክምና ጉዞን እናመቻቻለን። ከበረራ ቦታ ማስያዝ እና ምቹ መስተንግዶዎች ጀምሮ የህክምና ቪዛ ዝግጅቶችን እና የአካባቢ መጓጓዣዎችን ሁሉንም እናስተዳድራለን። የእኛ ቡድን ሙሉ በሙሉ በጤናዎ እና በማገገምዎ ላይ ማተኮር እንዲችሉ ከጭንቀት ነፃ የሆነ ተሞክሮ ያረጋግጣል።'
+        : "We facilitate medical travel by partnering with top-tier hospitals and specialists worldwide. We manage everything from flight bookings and comfortable accommodations to medical visa arrangements and local transport. Our dedicated team ensures a stress-free experience so you can focus entirely on your health and recovery.",
+      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     },
   ];
 

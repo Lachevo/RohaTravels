@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
-import { PlaneIcon, HotelIcon, CameraIcon, GlobeIcon } from 'lucide-react';
+import { PlaneIcon, HotelIcon, CameraIcon, GlobeIcon, StethoscopeIcon } from 'lucide-react';
 
 const OurServices = ({ isAmharic }) => {
   const content = {
@@ -21,6 +21,10 @@ const OurServices = ({ isAmharic }) => {
         icon: <GlobeIcon className="h-6 w-6" />,
         title: isAmharic ? "ጉዞዎች" : "Tours",
       },
+      {
+        icon: <StethoscopeIcon className="h-6 w-6" />,
+        title: isAmharic ? "የህክምና ጉዞ" : "Medical Travel",
+      },
     ],
   };
 
@@ -29,7 +33,7 @@ const OurServices = ({ isAmharic }) => {
       <h2 className="text-3xl font-bold mb-8 text-center text-[#28424F]">
         {isAmharic ? "የእኛ አገልግሎቶች" : "Our Services"}
       </h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
         {content.services.map((service, index) => (
           <Card key={index} className="text-center bg-white">
             <CardContent className="p-6">

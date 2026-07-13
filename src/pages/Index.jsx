@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { GlobeIcon, PlaneIcon, HotelIcon, CameraIcon, StarIcon, CheckCircleIcon } from 'lucide-react';
+import { GlobeIcon, PlaneIcon, HotelIcon, CameraIcon, StarIcon, CheckCircleIcon, StethoscopeIcon } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
@@ -33,6 +33,7 @@ const Index = ({ isAmharic }) => {
       { icon: <HotelIcon className="h-6 w-6" />, title: isAmharic ? 'ሆቴሎች' : 'Hotels' },
       { icon: <CameraIcon className="h-6 w-6" />, title: isAmharic ? 'የፎቶግራፍ ጉዞዎች' : 'Photography Tours' },
       { icon: <GlobeIcon className="h-6 w-6" />, title: isAmharic ? 'ጉዞዎች' : 'Tours' },
+      { icon: <StethoscopeIcon className="h-6 w-6" />, title: isAmharic ? 'የህክምና ጉዞ' : 'Medical Travel' },
     ],
     whyChooseUsList: [
       { title: isAmharic ? 'ልምድ ያለው ቡድን' : 'Experienced Team', description: isAmharic ? 'በጉዞ ኢንዱስትሪው ውስጥ ረጅም ልምድ ያለው ቡድን' : 'Team with extensive experience in the travel industry' },
@@ -211,7 +212,7 @@ const Index = ({ isAmharic }) => {
         <h2 className="text-3xl font-bold text-center mb-12 text-black">
           {isAmharic ? "የእኛ አገልግሎቶች" : "Our Services"}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-16">
           {content.services.map((service, index) => (
             <Card key={index} className="bg-white border border-gray-200">
               <CardHeader>
