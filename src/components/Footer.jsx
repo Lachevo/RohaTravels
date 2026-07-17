@@ -45,7 +45,7 @@ const Footer = ({ isAmharic }) => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <img src="/logo.png" alt="Roha Logo" className="w-12 h-12 rounded-full object-contain" />
+              <img src="/logo.png" alt="Roha Logo" className="w-12 h-12 object-contain" />
               <h3 className="text-xl font-bold text-white tracking-tight">
                 {isAmharic ? "ሮሃ ጉዞና ቱሪዝም" : "Roha Travels"}
               </h3>

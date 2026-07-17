@@ -44,21 +44,18 @@ const Header = ({ isAmharic, toggleLanguage }) => {
     <header
       className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-500 w-[95%] max-w-6xl rounded-full ${
         scrolled
-          ? 'top-4 bg-[#1a2e3a]/80 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.12)] border border-white/10 py-3 px-6'
+          ? 'top-4 bg-[#294050] shadow-[0_8px_32px_rgba(0,0,0,0.15)] border border-white/5 py-3 px-6'
           : 'top-6 bg-transparent py-4 px-6'
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="relative">
-            <div className="absolute inset-0 bg-[#e0cd95]/20 rounded-full blur-sm group-hover:blur-md transition-all duration-300" />
-            <img
-              src="/logo.png"
-              alt="Roha Logo"
-              className="relative w-11 h-11 rounded-full object-contain"
-            />
-          </div>
+          <img
+            src="/logo.png"
+            alt="Roha Logo"
+            className="w-11 h-11 object-contain"
+          />
           <span className="text-xl font-bold text-white hidden sm:inline tracking-tight">
             {isAmharic ? 'ሮሃ ጉዞና ቱሪዝም' : (
               <>
@@ -144,7 +141,12 @@ const MobileMenu = ({ isAmharic, toggleLanguage, activeSection, scrollToSection 
         <div className="fixed inset-0 z-[100] flex flex-col" style={{ background: 'rgba(26, 46, 58, 0.98)', backdropFilter: 'blur(20px)' }}>
           {/* Close */}
           <div className="flex justify-between items-center p-5">
-            <span className="text-xl font-bold text-[#e0cd95]">Roha Travels</span>
+            <div className="flex items-center gap-2">
+              <img src="/logo.png" alt="Roha Logo" className="w-8 h-8 object-contain" />
+              <span className="text-xl font-bold text-[#e0cd95]">
+                {isAmharic ? 'ሮሃ ጉዞና ቱሪዝም' : 'Roha Travels'}
+              </span>
+            </div>
             <button
               onClick={() => setOpen(false)}
               className="p-2 text-white/70 hover:text-white rounded-lg hover:bg-white/10 transition-colors"
