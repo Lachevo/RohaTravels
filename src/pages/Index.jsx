@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { GlobeIcon, PlaneIcon, HotelIcon, CameraIcon, StarIcon, CheckCircleIcon, StethoscopeIcon, ArrowRight, Calendar, MapPin, Users } from 'lucide-react';
+import { GlobeIcon, PlaneIcon, HotelIcon, CameraIcon, StarIcon, CheckCircleIcon, StethoscopeIcon, ArrowRight, Calendar, MapPin, Users, ShieldCheck, BadgeCheck, HeartPulse } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
@@ -32,22 +32,22 @@ const Index = ({ isAmharic }) => {
     heroTitle: isAmharic ? 'እንኳን ወደ ሮሃ ጉዞና ቱሪዝም በደህና መጡ' : 'Welcome to Roha Tour and Travel',
     heroSubtitle: isAmharic ? 'የእርስዎ የተሟላ የጉዞ አጋር' : 'Your Complete Travel Partner',
     heroDescription: isAmharic
-      ? 'ሮሃ ጉዞና ቱሪዝም ለእርስዎ የጉዞ ፍላጎቶች ሁሉ አንድ ማቆሚያ ነው። ከአየር መንገድ ትኬቶች እስከ ሆቴል ቦታ ማስያዣዎች እና ከጉዞ ፓኬጆች እስከ የፎቶግራፍ ጉዞዎች፣ እኛ የእርስዎን ጉዞ ቀላል እና ደስታ እንዲሆን እናደርጋለን።'
-      : 'Roha Tour and Travel is your one-stop solution for all your travel needs. From flight tickets to hotel bookings, and from tour packages to photography tours, we make your journey easy and enjoyable.',
+      ? 'ሮሃ ጉዞና ቱሪዝም ለእርስዎ የጉዞ ፍላጎቶች ሁሉ አንድ ማቆሚያ ነው። ከአየር መንገድ ትኬቶች እስከ ሆቴል ቦታ ማስያዣዎች፣ ከጉዞ ፓኬጆች እስከ የፎቶግራፍ ጉዞዎች፣ እና ወደ ህንድ የሚደረጉ ሙሉ የህክምና ጉዞዎች — እኛ የእርስዎን ጉዞ ቀላል እና ደስታ እንዲሆን እናደርጋለን።'
+      : 'Roha Tour and Travel is your one-stop solution for all your travel needs. From flight tickets to hotel bookings, tour packages to photography tours, and specialized medical travel to India — we make every journey seamless and stress-free.',
     book: isAmharic ? 'ቦታ ይያዙ' : 'Book',
     whyChooseUs: isAmharic ? 'ለምን እኛን መምረጥ አለብዎት' : 'Why Choose Us',
     testimonials: isAmharic ? 'የደንበኞች አስተያየቶች' : 'Testimonials',
     aboutUs: isAmharic ? 'ስለ እኛ' : 'About Us',
     aboutUsDescription: isAmharic
-      ? 'ሮሃ ጉዞና ቱሪዝም በ2013 ዓ.ም. የተመሰረተ የኢትዮጵያ ጉዞ ኤጀንሲ ነው። ከተመሰረትን ጀምሮ፣ ለደንበኞቻችን ልዩ የጉዞ ልምዶችን በመስጠት ላይ ነን። የእኛ ቡድን በጉዞ ኢንዱስትሪው ውስጥ ረጅም ልምድ ያለው ሲሆን ለእያንዳንዱ ደንበኛ ልዩ አገልግሎት ለመስጠት ቁርጠኛ ነው።'
-      : 'Roha Tour and Travel is an Ethiopian travel agency founded in 2021. Since our inception, we have been providing exceptional travel experiences to our clients. Our team has extensive experience in the travel industry and is dedicated to offering personalized service to each customer.',
+      ? 'ሮሃ ጉዞና ቱሪዝም በ2013 ዓ.ም. የተመሰረተ የኢትዮጵያ ጉዞ ኤጀንሲ ነው። ከተለመደው ጉዞ ባሻገር፣ ወደ ህንድ ምርጥ ሆስፒታሎች (አፖሎ፣ ፎርቲስ፣ ማክስ እና ሌሎችም) የሙሉ ድጋፍ የህክምና ጉዞ አገልግሎት እንሰጣለን። ቪዛ ፣ ትኬት ፣ ሆቴልና ቀጠሮ — ሁሉን አስተዳደርን።'
+      : 'Roha Tour and Travel is an Ethiopian travel agency founded in 2021. Beyond leisure travel, we are specialists in end-to-end medical travel to India — connecting patients with top hospitals like Apollo, Fortis, and Max while handling every logistic from visa to return flight.',
     moreAboutUs: isAmharic ? 'ተጨማሪ ስለ እኛ' : 'More About Us',
     services: [
       { icon: <PlaneIcon className="h-6 w-6" />, title: isAmharic ? 'የአየር ጉዞ' : 'Flights', desc: isAmharic ? 'ምርጥ የበረራ ቅናሾች' : 'Best flight ticket deals worldwide' },
       { icon: <HotelIcon className="h-6 w-6" />, title: isAmharic ? 'ሆቴሎች' : 'Hotels', desc: isAmharic ? 'ጥራት ያላቸው ሆቴሎች' : 'Handpicked luxury stays' },
       { icon: <CameraIcon className="h-6 w-6" />, title: isAmharic ? 'የፎቶግራፍ ጉዞዎች' : 'Photography Tours', desc: isAmharic ? 'ልዩ የፎቶግራፍ ጉዞዎች' : 'Picture-perfect excursions' },
       { icon: <GlobeIcon className="h-6 w-6" />, title: isAmharic ? 'ጉዞዎች' : 'Tours', desc: isAmharic ? 'የባህልና ታሪካዊ ጉዞዎች' : 'Curated historical experiences' },
-      { icon: <StethoscopeIcon className="h-6 w-6" />, title: isAmharic ? 'የህክምና ጉዞ' : 'Medical Travel', desc: isAmharic ? 'የህክምና ጉዞ አመቻችነት' : 'Global healthcare travel solutions' },
+      { icon: <StethoscopeIcon className="h-6 w-6" />, title: isAmharic ? 'የህክምና ጉዞ — ህንድ' : 'Medical Travel — India', desc: isAmharic ? 'ወደ ህንድ ምርጥ ሆስፒታሎች' : 'Top hospitals in India, fully arranged' },
     ],
     whyChooseUsList: [
       { title: isAmharic ? 'ልምድ ያለው ቡድን' : 'Experienced Team', description: isAmharic ? 'በጉዞ ኢንዱስትሪው ውስጥ ረጅም ልምድ ያለው ቡድን' : 'Years of industry-leading travel expertise and guidance.' },
@@ -312,11 +312,80 @@ const Index = ({ isAmharic }) => {
               <span className="absolute bottom-3 left-3 text-white font-bold text-base drop-shadow-lg">Nepal</span>
             </div>
 
-            {/* Row 2, Col 3: New Zealand */}
+            {/* Row 2, Col 3: India Medical */}
             <div className="relative col-span-1 row-span-1 group overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80" alt="New Zealand" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-              <span className="absolute bottom-3 left-3 text-white font-bold text-base drop-shadow-lg">New Zealand</span>
+              <img src="https://images.unsplash.com/photo-1532375810709-75b1da00537c?auto=format&fit=crop&w=800&q=80" alt="India" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#294050]/80 via-black/10 to-transparent" />
+              <div className="absolute bottom-3 left-3">
+                <span className="text-white font-bold text-base drop-shadow-lg">India</span>
+                <div className="flex items-center gap-1 mt-0.5">
+                  <StethoscopeIcon className="w-3 h-3 text-[#e0cd95]" />
+                  <span className="text-[#e0cd95] text-xs font-light">{isAmharic ? 'የህክምና ጉዞ' : 'Medical Travel'}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Medical Travel to India — Callout Banner */}
+        <section className="relative overflow-hidden rounded-3xl">
+          <img
+            src="https://images.unsplash.com/photo-1532375810709-75b1da00537c?auto=format&fit=crop&w=1600&q=80"
+            alt="India Medical Travel"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1a2e3a]/95 via-[#294050]/80 to-[#1a2e3a]/40" />
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 p-10 md:p-14 items-center">
+            <div className="space-y-5">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-[#e0cd95]/20 flex items-center justify-center">
+                  <StethoscopeIcon className="w-4 h-4 text-[#e0cd95]" />
+                </div>
+                <span className="text-[#e0cd95] text-xs font-semibold uppercase tracking-widest">
+                  {isAmharic ? 'ልዩ አገልግሎት' : 'Specialized Service'}
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                {isAmharic ? 'ወደ ህንድ የህክምና ጉዞ' : 'Medical Travel to India'}
+              </h2>
+              <p className="text-white/80 font-light leading-relaxed text-base">
+                {isAmharic
+                  ? 'ሮሃ ጉዞና ቱሪዝም ወደ ህንድ ምርጥ ሆስፒታሎችና ስፔሻሊስቶች ያለ ችግር ጉዞ ያስተናግዳል። ቪዛ፣ ትኬት፣ ሆቴልና የሆስፒታል ቀጠሮዎችን ሁሉ እናስተዳድራለን።'
+                  : 'We handle end-to-end medical trips to India — from visa processing and flight bookings to hospital appointments, accommodation near top medical centers, and local transport. Trusted by hundreds of Ethiopian patients annually.'}
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  isAmharic ? 'ቪዛ ድጋፍ' : 'Visa Assistance',
+                  isAmharic ? 'ሆስፒታል ቀጠሮ' : 'Hospital Appointments',
+                  isAmharic ? 'ትኬት ቦታ ማስያዝ' : 'Flight Booking',
+                  isAmharic ? 'ሆቴል ማረፊያ' : 'Accommodation',
+                ].map((tag) => (
+                  <span key={tag} className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white/90 text-xs font-medium">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <button
+                onClick={() => scrollToSection('booking')}
+                className="inline-flex items-center gap-2 bg-[#e0cd95] hover:bg-[#c8b57d] text-[#1a2e3a] font-bold px-6 py-3 rounded-xl transition-all duration-300 shadow-lg text-sm mt-2"
+              >
+                {isAmharic ? 'አሁን ያቅዱ' : 'Plan Your Medical Trip'}
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+            <div className="hidden lg:grid grid-cols-2 gap-3">
+              {[
+                { icon: <StethoscopeIcon className="w-5 h-5 text-[#e0cd95]" />, title: isAmharic ? 'ምርጥ ሆስፒታሎች' : 'Top Hospitals', desc: isAmharic ? 'Apollo, Fortis, Max ሌሎችም' : 'Apollo, Fortis, Max & more' },
+                { icon: <PlaneIcon className="w-5 h-5 text-[#e0cd95]" />, title: isAmharic ? 'ቀጥታ በረራዎች' : 'Direct Flights', desc: isAmharic ? 'ከአዲስ አበባ ወደ ዴሊ/ሙምባይ' : 'Addis to Delhi / Mumbai' },
+                { icon: <ShieldCheck className="w-5 h-5 text-[#e0cd95]" />, title: isAmharic ? 'ፈጣን ቪዛ' : 'Fast Visa', desc: isAmharic ? 'የህክምና ቪዛ ዝግጅት' : 'Medical visa processing' },
+                { icon: <HeartPulse className="w-5 h-5 text-[#e0cd95]" />, title: isAmharic ? 'ሙሉ ድጋፍ' : 'Full Support', desc: isAmharic ? 'ከጅምር እስከ መጨረሻ' : 'From departure to return' },
+              ].map((item) => (
+                <div key={item.title} className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-4 space-y-2">
+                  <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center">{item.icon}</div>
+                  <h4 className="text-white font-semibold text-sm">{item.title}</h4>
+                  <p className="text-white/60 text-xs font-light">{item.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
