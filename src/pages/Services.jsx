@@ -1,9 +1,22 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { PlaneIcon, HotelIcon, GlobeIcon, UmbrellaIcon, MapIcon, CameraIcon, StethoscopeIcon } from 'lucide-react';
+import { PlaneIcon, HotelIcon, GlobeIcon, UmbrellaIcon, MapIcon, CameraIcon, StethoscopeIcon, ArrowRight, HelpCircle, ShieldCheck } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Services = ({ isAmharic }) => {
   const [selectedService, setSelectedService] = useState(null);
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const services = [
     {
@@ -86,34 +99,105 @@ const Services = ({ isAmharic }) => {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-white">
-      <h1 className="text-4xl font-bold text-center mb-8 text-black">
-        {isAmharic ? 'የእኛ አገልግሎቶች' : 'Our Services'}
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {services.map((service, index) => (
-          <Card 
-            key={index} 
-            className={`bg-white border border-gray-200 transition-shadow duration-300 hover:shadow-lg cursor-pointer ${selectedService === index ? 'col-span-3' : ''}`}
-            onClick={() => setSelectedService(selectedService === index ? null : index)}
-          >
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-black">
-                {service.icon}
-                <span>{service.title}</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-black mb-4">{service.shortDescription}</p>
-              {selectedService === index && (
-                <div className="grid md:grid-cols-2 gap-4">
-                  <img src={service.image} alt={service.title} className="w-full h-64 object-cover rounded" />
-                  <p className="text-black">{service.longDescription}</p>
+    <div className="bg-[#f8fafb] min-h-screen pt-28 pb-20">
+      <div className="container mx-auto px-6 space-y-12">
+        {/* Header Block */}
+        <div className="text-center space-y-4 max-w-2xl mx-auto">
+          <span className="section-badge">{isAmharic ? "አገልግሎቶቻችን" : "Our Services"}</span>
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-[#1a2e3a] tracking-tight leading-tight">
+            {isAmharic ? 'የእኛ አገልግሎቶች' : 'Travel Services We Offer'}
+          </h1>
+          <p className="text-slate-500 font-light text-sm">
+            {isAmharic
+              ? "ለእርስዎ ሙሉ የጉዞ ፍላጎት የተዘጋጁ ልዩ አገልግሎቶቻችንን እዚህ ያግኙ።"
+              : "Explore our premium and custom-designed services built around your destination needs."}
+          </p>
+        </div>
+
+        {/* Services List Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => {
+            const isOpen = selectedService === index;
+            return (
+              <motion.div
+                layout
+                key={index}
+                className={`bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-md cursor-pointer transition-all duration-300 hover:shadow-xl ${
+                  isOpen ? 'md:col-span-2 lg:col-span-3' : ''
+                }`}
+                onClick={() => setSelectedService(isOpen ? null : index)}
+              >
+                <div className={`p-8 ${isOpen ? 'lg:flex gap-8 items-center' : ''}`}>
+                  {/* Left part */}
+                  <div className={`flex-1 ${isOpen ? 'space-y-6' : 'space-y-4'}`}>
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-[#294050]/10 flex items-center justify-center text-[#294050]">
+                        {service.icon}
+                      </div>
+                      <h3 className="text-xl font-bold text-[#1a2e3a] tracking-tight">
+                        {service.title}
+                      </h3>
+                    </div>
+
+                    <p className="text-slate-500 font-light text-sm leading-relaxed">
+                      {service.shortDescription}
+                    </p>
+
+                    {!isOpen && (
+                      <div className="flex items-center gap-1.5 text-xs font-bold text-[#294050] hover:underline">
+                        <span>{isAmharic ? "ዝርዝር አሳይ" : "Read Details"}</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Expanded block */}
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="flex-1 lg:flex gap-8 mt-6 lg:mt-0 pt-6 lg:pt-0 border-t lg:border-t-0 lg:border-l border-slate-100 lg:pl-8 space-y-6 lg:space-y-0"
+                      >
+                        <div className="flex-1">
+                          <img
+                            src={service.image}
+                            alt={service.title}
+                            className="w-full h-56 object-cover rounded-2xl shadow-sm"
+                          />
+                        </div>
+                        <div className="flex-1 flex flex-col justify-between space-y-4">
+                          <p className="text-slate-600 font-light text-sm leading-relaxed">
+                            {service.longDescription}
+                          </p>
+                          <div className="flex gap-4">
+                            <button onClick={() => scrollToSection('booking')} className="flex-1">
+                              <Button className="w-full bg-[#294050] text-[#C8DDD8] hover:bg-[#1a2e3a] hover:text-white rounded-xl py-3 font-semibold shadow-md flex items-center justify-center gap-2 border-none">
+                                {isAmharic ? "ቦታ ይያዙ" : "Book This Service"}
+                                <ArrowRight className="w-4 h-4" />
+                              </Button>
+                            </button>
+                            <Button
+                              variant="outline"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setSelectedService(null);
+                              }}
+                              className="rounded-xl border-slate-200 text-slate-500 hover:bg-slate-50 font-semibold px-4"
+                            >
+                              {isAmharic ? "ዝጋ" : "Close"}
+                            </Button>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
-              )}
-            </CardContent>
-          </Card>
-        ))}
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

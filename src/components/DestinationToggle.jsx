@@ -1,34 +1,28 @@
 import React from 'react';
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
 
 const DestinationToggle = ({ isAmharic, isLocal, setIsLocal }) => {
-  const handleToggle = () => {
-    if (setIsLocal) {
-      setIsLocal(!isLocal);
-    }
-  };
-
   return (
-    <div className="flex items-center justify-center space-x-4">
-      <Label
-        htmlFor="destination-type"
-        className={`${isLocal ? "font-bold" : ""} text-black`}
+    <div className="flex items-center gap-1 bg-slate-100 p-1.5 rounded-xl border border-slate-200/50">
+      <button
+        onClick={() => setIsLocal(true)}
+        className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 ${
+          isLocal
+            ? 'bg-[#294050] text-[#C8DDD8] shadow-md'
+            : 'text-slate-500 hover:text-[#294050]'
+        }`}
       >
-        {isAmharic ? "የአገር ውስጥ" : "Local"}
-      </Label>
-      <Switch
-        id="destination-type"
-        checked={!isLocal}
-        onCheckedChange={handleToggle}
-        className="data-[state=checked]:bg-[#294050]"
-      />
-      <Label
-        htmlFor="destination-type"
-        className={`${!isLocal ? "font-bold" : ""} text-black`}
+        {isAmharic ? "የአገር ውስጥ" : "Domestic"}
+      </button>
+      <button
+        onClick={() => setIsLocal(false)}
+        className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 ${
+          !isLocal
+            ? 'bg-[#294050] text-[#C8DDD8] shadow-md'
+            : 'text-slate-500 hover:text-[#294050]'
+        }`}
       >
         {isAmharic ? "ዓለም አቀፍ" : "International"}
-      </Label>
+      </button>
     </div>
   );
 };

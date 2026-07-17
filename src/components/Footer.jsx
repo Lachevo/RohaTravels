@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FacebookIcon, InstagramIcon, PhoneIcon } from 'lucide-react';
+import { FacebookIcon, InstagramIcon, PhoneIcon, Mail, MapPin, Send } from 'lucide-react';
 
 const TikTokIcon = ({ color = "#000000", size = 24 }) => {
   return (
@@ -39,119 +39,131 @@ const Footer = ({ isAmharic }) => {
   ];
 
   return (
-    <footer className="bg-[#294050] text-[#C8DDD8] py-8">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h3 className="text-xl font-bold mb-4">
-              {isAmharic ? "ሮሃ ጉዞና ቱሪዝም" : "Roha Tour and Travel"}
-            </h3>
-            <p>
+    <footer className="bg-[#1a2e3a] text-slate-300 pt-16 pb-8 border-t border-white/5 relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#e0cd95]/40 to-transparent" />
+      <div className="container mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <img src="/logo.png" alt="Roha Logo" className="w-12 h-12 rounded-full object-contain" />
+              <h3 className="text-xl font-bold text-white tracking-tight">
+                {isAmharic ? "ሮሃ ጉዞና ቱሪዝም" : "Roha Travels"}
+              </h3>
+            </div>
+            <p className="text-slate-400 text-sm font-light leading-relaxed">
               {isAmharic
-                ? "የእርስዎ የተሟላ የጉዞ አጋር"
-                : "Your Complete Travel Partner"}
+                ? "የእርስዎ የተሟላ የጉዞ አጋር። ከአየር መንገድ ትኬቶች እስከ ሆቴል ቦታ ማስያዣዎች እና ልዩ ጉዞዎች።"
+                : "Your complete premium travel partner. Crafting exceptional flight, hotel, and photographic tours since 2021."}
             </p>
+            <div className="flex space-x-3 pt-2">
+              <a
+                href="https://www.facebook.com/ROHAPLC?mibextid=LQQJ4d"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 hover:text-white flex items-center justify-center transition-all duration-300"
+              >
+                <FacebookIcon size={18} />
+              </a>
+              <a
+                href="https://www.instagram.com/roha_travels?igsh=anFkN2dsc3Z6cWg%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 hover:text-white flex items-center justify-center transition-all duration-300"
+              >
+                <InstagramIcon size={18} />
+              </a>
+              <a
+                href="https://www.tiktok.com/@rohatravel?_t=8qCSUzJ98fm&_r=1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 hover:text-white flex items-center justify-center transition-all duration-300"
+              >
+                <TikTokIcon color="currentColor" size={18} />
+              </a>
+              <a
+                href="https://t.me/+aKIXqUC1B9FmNzNk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 hover:text-white flex items-center justify-center transition-all duration-300"
+              >
+                <TelegramIcon color="currentColor" size={18} />
+              </a>
+            </div>
           </div>
-          <div>
-            <h4 className="text-lg font-semibold mb-4">
+
+          <div className="space-y-4">
+            <h4 className="text-lg font-bold text-white tracking-tight">
               {isAmharic ? "ያግኙን" : "Contact Us"}
             </h4>
-            <p>
-              <a
-                href="mailto:info@roha-travels.com"
-                className="hover:underline"
-              >
-                Email: info@roha-travels.com
-              </a>
-            </p>
-            <p>
-              <a href="tel:+251911611111" className="hover:underline">
-                {isAmharic ? "ስልክ" : "Phone"}: +251-91-161-1111
-              </a>
-            </p>
-            <p>
-              <a href="tel:+251911888666" className="hover:underline">
-                {isAmharic ? "ስልክ" : "Phone"}: +251-91-188-8666
-              </a>
-            </p>
-            <p>
-              <a href="tel:+251913118414" className="hover:underline">
-                {isAmharic ? "ስልክ" : "Phone"}: +251-91-311-8414
-              </a>
-            </p>
-            <p>
-              <a href="tel:+251978231313" className="hover:underline">
-                {isAmharic ? "ስልክ" : "Phone"}: +251-97-823-1313
-              </a>
-            </p>
+            <ul className="space-y-3 text-sm text-slate-400 font-light">
+              <li className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-[#e0cd95]" />
+                <a href="mailto:info@roha-travels.com" className="hover:text-white transition-colors">
+                  info@roha-travels.com
+                </a>
+              </li>
+              <li className="flex items-start gap-2">
+                <PhoneIcon className="w-4 h-4 text-[#e0cd95] mt-0.5" />
+                <div className="space-y-1">
+                  <a href="tel:+251911611111" className="block hover:text-white transition-colors">+251-91-161-1111</a>
+                  <a href="tel:+251911888666" className="block hover:text-white transition-colors">+251-91-188-8666</a>
+                  <a href="tel:+251913118414" className="block hover:text-white transition-colors">+251-91-311-8414</a>
+                  <a href="tel:+251978231313" className="block hover:text-white transition-colors">+251-97-823-1313</a>
+                </div>
+              </li>
+            </ul>
           </div>
-          <div>
-            <h4 className="text-lg font-semibold mb-4">
+
+          <div className="space-y-4">
+            <h4 className="text-lg font-bold text-white tracking-tight">
               {isAmharic ? "ሀብቶች" : "Resources"}
             </h4>
-            <ul>
+            <ul className="space-y-2 text-sm text-slate-400 font-light">
               {resources.map((resource, index) => (
-                <li key={index} className="mb-2">
-                  <Link to={resource.link} className="hover:underline">
+                <li key={index}>
+                  <Link to={resource.link} className="hover:text-[#e0cd95] transition-colors flex items-center gap-1 group">
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-600 group-hover:bg-[#e0cd95] transition-all" />
                     {resource.title}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-          <div>
-            <h4 className="text-lg font-semibold mb-4">
-              {isAmharic ? "ተከተሉን" : "Follow Us"}
+
+          <div className="space-y-4">
+            <h4 className="text-lg font-bold text-white tracking-tight">
+              {isAmharic ? "ዜና መጽሔት" : "Newsletter"}
             </h4>
-            <div className="flex space-x-4">
-              <a
-                href="https://www.facebook.com/ROHAPLC?mibextid=LQQJ4d"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-80"
-              >
-                <FacebookIcon size={24} />
-              </a>
-              <a
-                href="https://www.instagram.com/roha_travels?igsh=anFkN2dsc3Z6cWg%3D&utm_source=qr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-80"
-              >
-                <InstagramIcon size={24} />
-              </a>
-              <a
-                href="https://www.tiktok.com/@rohatravel?_t=8qCSUzJ98fm&_r=1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-80"
-              >
-                <TikTokIcon color="#C8DDD8" size={24} />
-              </a>
-              <a
-                href="https://t.me/+aKIXqUC1B9FmNzNk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-80"
-              >
-                <TelegramIcon color="#C8DDD8" size={24} />
-              </a>
+            <p className="text-sm text-slate-400 font-light">
+              {isAmharic ? "የጉዞ መረጃዎችንና ቅናሾችን ለማግኘት ይመዝገቡ።" : "Subscribe to get our latest travel guides and exclusive package offers."}
+            </p>
+            <div className="relative flex items-center">
+              <input
+                type="email"
+                placeholder={isAmharic ? "ኢሜይል" : "Your email address"}
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#e0cd95] transition-all pr-10"
+              />
+              <button className="absolute right-2 text-slate-400 hover:text-[#e0cd95] transition-colors p-1.5">
+                <Send className="w-4 h-4" />
+              </button>
             </div>
           </div>
         </div>
-        <div className="mt-8 text-center">
+
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p>
-            &copy; 2024 Roha Tour and Travel.{" "}
+            &copy; {new Date().getFullYear()} Roha Tour and Travel.{" "}
             {isAmharic ? "መብቱ በህግ የተጠበቀ ነው።" : "All rights reserved."}
           </p>
-          <p className="mt-2">
+          <p>
+            {isAmharic ? "የተገነባው በ" : "Designed & Developed by "}{" "}
             <a
               href="https://t.me/keneanalemayhu"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:underline"
+              className="text-slate-400 hover:text-white transition-colors underline"
             >
-              {isAmharic ? "ከነአን አለማየሁ" : "Kenean Alemayhu"}
+              Kenean Alemayhu
             </a>
           </p>
         </div>

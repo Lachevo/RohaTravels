@@ -5,75 +5,89 @@ import { MapPinIcon, CalendarIcon, UsersIcon, GlobeIcon, ShieldIcon, HeadphonesI
 
 const Booking = ({ isAmharic }) => {
   const content = {
-    title: isAmharic ? "ጉዞዎን ይቁጠሩ" : "Plan Your Journey",
+    title: isAmharic ? "ጉዞዎን ይቁጠሩ" : "Plan Your Next Adventure",
     subtitle: isAmharic
       ? "ቦታ ለማስያዝ ከታች ያለውን ቅጽ ይሙሉ"
-      : "Fill out the form below to book your trip",
+      : "Complete the fields below to verify and finalize your custom booking itinerary.",
     features: [
       {
-        icon: <MapPinIcon className="h-8 w-8 text-[#294050]" />,
+        icon: <MapPinIcon className="h-6 w-6 text-[#294050]" />,
         title: isAmharic ? "ልዩ መዳረሻዎች" : "Unique Destinations",
         description: isAmharic
           ? "ልዩ እና አስደናቂ ቦታዎችን ይጎብኙ"
-          : "Visit extraordinary and breathtaking places",
+          : "Discover spectacular, hidden gems and historical monuments.",
       },
       {
-        icon: <CalendarIcon className="h-8 w-8 text-[#294050]" />,
-        title: isAmharic ? "ተለዋጭ ቀናት" : "Flexible Dates",
+        icon: <CalendarIcon className="h-6 w-6 text-[#294050]" />,
+        title: isAmharic ? "ተለዋጭ ቀናት" : "Flexible Schedules",
         description: isAmharic
           ? "ለእርስዎ የሚመች ጊዜ ይምረጡ"
-          : "Choose the time that suits you best",
+          : "Book customizable itineraries tailored perfectly around your timeline.",
       },
       {
-        icon: <UsersIcon className="h-8 w-8 text-[#294050]" />,
+        icon: <UsersIcon className="h-6 w-6 text-[#294050]" />,
         title: isAmharic ? "ግላዊ አገልግሎት" : "Personalized Service",
         description: isAmharic
           ? "የእርስዎን ፍላጎት የሚያሟላ አገልግሎት"
-          : "Service tailored to your preferences",
+          : "Receive one-on-one professional guidance and custom recommendations.",
       },
       {
-        icon: <GlobeIcon className="h-8 w-8 text-[#294050]" />,
+        icon: <GlobeIcon className="h-6 w-6 text-[#294050]" />,
         title: isAmharic ? "ዓለም አቀፍ ጉዞዎች" : "International Travel",
         description: isAmharic
           ? "የዓለምን ድንቅ ቦታዎች ይመልከቱ"
-          : "Explore wonders around the world",
+          : "Seamlessly navigate top destinations with zero hassle.",
       },
       {
-        icon: <ShieldIcon className="h-8 w-8 text-[#294050]" />,
-        title: isAmharic ? "ደህንነት እና ጥንቃቄ" : "Safety and Security",
+        icon: <ShieldIcon className="h-6 w-6 text-[#294050]" />,
+        title: isAmharic ? "ደህንነት እና ጥንቃቄ" : "Safety & Protection",
         description: isAmharic
           ? "የደንበኞቻችን ደህንነት ቅድሚያ የምንሰጠው ጉዳይ ነው"
-          : "Your safety is our top priority",
+          : "Travel with complete peace of mind with our secure bookings.",
       },
       {
-        icon: <HeadphonesIcon className="h-8 w-8 text-[#294050]" />,
+        icon: <HeadphonesIcon className="h-6 w-6 text-[#294050]" />,
         title: isAmharic ? "24/7 ድጋፍ" : "24/7 Support",
         description: isAmharic
           ? "ሁልጊዜ እርስዎን ለመርዳት ዝግጁ ነን"
-          : "We're always ready to assist you",
+          : "Our dedicated representatives are active and reachable at any hour.",
       },
     ],
   };
 
   return (
-    <div className="container mx-auto px-4 py-12 bg-gray-50">
-      <h1 className="text-4xl font-bold text-center mb-2 text-black">{content.title}</h1>
-      <p className="text-xl text-center mb-12 text-gray-600">{content.subtitle}</p>
-      
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-        {content.features.map((feature, index) => (
-          <Card key={index} className="bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <CardContent className="flex flex-col items-center p-6">
-              {feature.icon}
-              <h3 className="mt-4 text-xl font-semibold text-center">{feature.title}</h3>
-              <p className="mt-2 text-center text-gray-600">{feature.description}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+    <div className="bg-[#f8fafb] min-h-screen pt-28 pb-20">
+      <div className="container mx-auto px-6 space-y-12">
+        {/* Header Block */}
+        <div className="text-center space-y-4 max-w-2xl mx-auto">
+          <span className="section-badge">{isAmharic ? "ቦታ ማስያዣ" : "Secure Reservation"}</span>
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-[#1a2e3a] tracking-tight leading-tight">
+            {content.title}
+          </h1>
+          <p className="text-slate-500 font-light text-sm">
+            {content.subtitle}
+          </p>
+        </div>
 
-      <div className="bg-white shadow-2xl rounded-lg p-8">
-        <BookingForm isAmharic={isAmharic} />
+        {/* Feature Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {content.features.map((feature, index) => (
+            <Card key={index} className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm card-hover flex items-start gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-[#294050]/10 flex items-center justify-center flex-shrink-0">
+                {feature.icon}
+              </div>
+              <div className="space-y-1">
+                <h3 className="text-base font-bold text-[#1a2e3a] tracking-tight">{feature.title}</h3>
+                <p className="text-slate-500 font-light text-xs leading-relaxed">{feature.description}</p>
+              </div>
+            </Card>
+          ))}
+        </div>
+
+        {/* Form Container */}
+        <div className="bg-white border border-slate-100 rounded-3xl p-8 shadow-xl max-w-4xl mx-auto">
+          <BookingForm isAmharic={isAmharic} />
+        </div>
       </div>
     </div>
   );

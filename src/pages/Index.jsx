@@ -1,18 +1,32 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { GlobeIcon, PlaneIcon, HotelIcon, CameraIcon, StarIcon, CheckCircleIcon, StethoscopeIcon } from 'lucide-react';
+import { Card, CardContent } from "@/components/ui/card";
+import { GlobeIcon, PlaneIcon, HotelIcon, CameraIcon, StarIcon, CheckCircleIcon, StethoscopeIcon, ArrowRight, Calendar, MapPin, Users } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import ImageCarousel from '../components/ImageCarousel';
 import PopularTours from '../components/PopularTours';
+import { motion } from 'framer-motion';
 
 const Index = ({ isAmharic }) => {
   const [location, setLocation] = useState('');
   const [bookingType, setBookingType] = useState('');
   const [dateFrom, setDateFrom] = useState(new Date().toISOString().split('T')[0]);
-  const navigate = useNavigate();
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const handleBook = () => {
+    scrollToSection('booking');
+  };
 
   const content = {
     heroTitle: isAmharic ? 'እንኳን ወደ ሮሃ ጉዞና ቱሪዝም በደህና መጡ' : 'Welcome to Roha Tour and Travel',
@@ -29,21 +43,21 @@ const Index = ({ isAmharic }) => {
       : 'Roha Tour and Travel is an Ethiopian travel agency founded in 2021. Since our inception, we have been providing exceptional travel experiences to our clients. Our team has extensive experience in the travel industry and is dedicated to offering personalized service to each customer.',
     moreAboutUs: isAmharic ? 'ተጨማሪ ስለ እኛ' : 'More About Us',
     services: [
-      { icon: <PlaneIcon className="h-6 w-6" />, title: isAmharic ? 'የአየር ጉዞ' : 'Flights' },
-      { icon: <HotelIcon className="h-6 w-6" />, title: isAmharic ? 'ሆቴሎች' : 'Hotels' },
-      { icon: <CameraIcon className="h-6 w-6" />, title: isAmharic ? 'የፎቶግራፍ ጉዞዎች' : 'Photography Tours' },
-      { icon: <GlobeIcon className="h-6 w-6" />, title: isAmharic ? 'ጉዞዎች' : 'Tours' },
-      { icon: <StethoscopeIcon className="h-6 w-6" />, title: isAmharic ? 'የህክምና ጉዞ' : 'Medical Travel' },
+      { icon: <PlaneIcon className="h-6 w-6" />, title: isAmharic ? 'የአየር ጉዞ' : 'Flights', desc: isAmharic ? 'ምርጥ የበረራ ቅናሾች' : 'Best flight ticket deals worldwide' },
+      { icon: <HotelIcon className="h-6 w-6" />, title: isAmharic ? 'ሆቴሎች' : 'Hotels', desc: isAmharic ? 'ጥራት ያላቸው ሆቴሎች' : 'Handpicked luxury stays' },
+      { icon: <CameraIcon className="h-6 w-6" />, title: isAmharic ? 'የፎቶግራፍ ጉዞዎች' : 'Photography Tours', desc: isAmharic ? 'ልዩ የፎቶግራፍ ጉዞዎች' : 'Picture-perfect excursions' },
+      { icon: <GlobeIcon className="h-6 w-6" />, title: isAmharic ? 'ጉዞዎች' : 'Tours', desc: isAmharic ? 'የባህልና ታሪካዊ ጉዞዎች' : 'Curated historical experiences' },
+      { icon: <StethoscopeIcon className="h-6 w-6" />, title: isAmharic ? 'የህክምና ጉዞ' : 'Medical Travel', desc: isAmharic ? 'የህክምና ጉዞ አመቻችነት' : 'Global healthcare travel solutions' },
     ],
     whyChooseUsList: [
-      { title: isAmharic ? 'ልምድ ያለው ቡድን' : 'Experienced Team', description: isAmharic ? 'በጉዞ ኢንዱስትሪው ውስጥ ረጅም ልምድ ያለው ቡድን' : 'Team with extensive experience in the travel industry' },
-      { title: isAmharic ? 'ግላዊ አገልግሎት' : 'Personalized Service', description: isAmharic ? 'ለእያንዳንዱ ደንበኛ ልዩ የሆነ አገልግሎት' : 'Tailored service for each customer' },
-      { title: isAmharic ? 'ተመጣጣኝ ዋጋ' : 'Competitive Prices', description: isAmharic ? 'ለሁሉም በጀት ተስማሚ የሆኑ ዋጋዎች' : 'Prices suitable for all budgets' },
+      { title: isAmharic ? 'ልምድ ያለው ቡድን' : 'Experienced Team', description: isAmharic ? 'በጉዞ ኢንዱስትሪው ውስጥ ረጅም ልምድ ያለው ቡድን' : 'Years of industry-leading travel expertise and guidance.' },
+      { title: isAmharic ? 'ግላዊ አገልግሎት' : 'Personalized Service', description: isAmharic ? 'ለእያንዳንዱ ደንበኛ ልዩ የሆነ አገልግሎት' : 'Tailor-made itineraries designed around your preferences.' },
+      { title: isAmharic ? 'ተመጣጣኝ ዋጋ' : 'Competitive Prices', description: isAmharic ? 'ለሁሉም በጀት ተስማሚ የሆኑ ዋጋዎች' : 'Premium value with highly transparent, budget-friendly rates.' },
     ],
     testimonialsList: [
-      { name: isAmharic ? 'አበበ በቀለ' : 'Abebe Bekele', comment: isAmharic ? 'አስደናቂ አገልግሎት! በጣም እመክራለሁ።' : 'Amazing service! Highly recommended.', rating: 5 },
-      { name: isAmharic ? 'ሰላም ታደሰ' : 'Selam Tadesse', comment: isAmharic ? 'ሮሃ ጉዞዎች ጉዞዬን ቀላል እና አስደሳች አድርጎታል።' : 'Roha Travels made my trip easy and enjoyable.', rating: 4 },
-      { name: isAmharic ? 'ዳዊት መኮንን' : 'Dawit Mekonnen', comment: isAmharic ? 'ምርጥ የጉዞ ኤጀንሲ በኢትዮጵያ!' : 'The best travel agency in Ethiopia!', rating: 5 },
+      { name: isAmharic ? 'አበበ በቀለ' : 'Abebe Bekele', comment: isAmharic ? 'አስደናቂ አገልግሎት! በጣም እመክራለሁ።' : 'Amazing service! Highly recommended.', rating: 5, role: 'Traveler' },
+      { name: isAmharic ? 'ሰላም ታደሰ' : 'Selam Tadesse', comment: isAmharic ? 'ሮሃ ጉዞዎች ጉዞዬን ቀላል እና አስደሳች አድርጎታል።' : 'Roha Travels made my trip easy and enjoyable.', rating: 5, role: 'Explorer' },
+      { name: isAmharic ? 'ዳዊት መኮንን' : 'Dawit Mekonnen', comment: isAmharic ? 'ምርጥ የጉዞ ኤጀንሲ በኢትዮጵያ!' : 'The best travel agency in Ethiopia!', rating: 5, role: 'Frequent Flyer' },
     ],
   };
 
@@ -73,164 +87,268 @@ const Index = ({ isAmharic }) => {
     return Array.from({ length: 5 }, (_, index) => (
       <StarIcon
         key={index}
-        className={`h-5 w-5 ${
-          index < rating ? "text-[#294050]" : "text-gray-300"
+        className={`h-4 w-4 ${
+          index < rating ? "text-[#e0cd95] fill-[#e0cd95]" : "text-gray-300"
         }`}
       />
     ));
   };
 
-  const handleBook = () => {
-    navigate('/booking');
-  };
-
   return (
-    <div className="bg-[#F2F2F2]">
-      <div className="relative min-h-screen flex items-center">
-        <div className="absolute inset-0">
+    <div className="bg-[#f8fafb] min-h-screen text-slate-800">
+      {/* Cinematic Hero Section */}
+      <section className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
           <img
-            src="https://plus.unsplash.com/premium_photo-1664362416374-4f734db57037?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop"
             alt="Hero landscape"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover scale-105 animate-float"
+            style={{ animationDuration: '20s' }}
           />
-          <div className="absolute inset-0 bg-black opacity-50"></div>
-        </div>
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-4 py-16 text-white text-center">
-          <img src="/logo.png" alt="Roha Logo" className="w-32 h-32 mx-auto mb-6" />
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">{content.heroTitle}</h1>
-          <h2 className="text-2xl sm:text-3xl font-semibold mb-4">
-            {content.heroSubtitle}
-          </h2>
-          <p className="text-lg sm:text-xl max-w-3xl mx-auto mb-8">{content.heroDescription}</p>
-          <div className="flex flex-col sm:flex-row gap-4 w-full max-w-4xl mx-auto bg-white/80 p-4 rounded-lg">
-            <Select onValueChange={setLocation} value={location}>
-              <SelectTrigger className="w-full sm:w-1/4 text-black">
-                <SelectValue placeholder={isAmharic ? "አካባቢዎች" : "Locations"} />
-              </SelectTrigger>
-              <SelectContent>
-                {internationalDestinations.map((dest, index) => (
-                  <SelectItem key={index} value={dest}>
-                    {dest}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Select onValueChange={setBookingType} value={bookingType}>
-              <SelectTrigger className="w-full sm:w-1/4 text-black">
-                <SelectValue
-                  placeholder={isAmharic ? "የቦታ ማስያዣ አይነት" : "Booking Type"}
-                />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="flight">Flight</SelectItem>
-                <SelectItem value="hotel">Hotel</SelectItem>
-                <SelectItem value="tour">Tour</SelectItem>
-              </SelectContent>
-            </Select>
-            <Input
-              type="date"
-              placeholder={isAmharic ? "ቀን" : "Date from"}
-              className="w-full sm:w-1/4 text-black bg-white border-gray-300"
-              value={dateFrom}
-              onChange={(e) => setDateFrom(e.target.value)}
-            />
-            <Button
-              onClick={handleBook}
-              className="w-full sm:w-1/4 bg-[#294050] text-[#C8DDD8] hover:bg-[#C8DDD8] hover:text-[#294050] hover:bg-opacity-90"
-            >
-              {content.book}
-            </Button>
-          </div>
-        </div>
-      </div>
-
-      <div className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-center mb-8 text-black">
-          {isAmharic ? "የጉዞ ፎቶዎች" : "Travel Photos"}
-        </h2>
-        <div className="mb-16">
-          <ImageCarousel images={carouselImages} />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1a2e3a]/90 via-[#1a2e3a]/60 to-[#f8fafb]"></div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center mb-16">
-          <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0">
-            <h2 className="text-3xl font-bold mb-4 text-black">
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pt-24 pb-16 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mb-4"
+          >
+            <span className="section-badge bg-[#e0cd95]/20 text-[#e0cd95] border-[#e0cd95]/40 py-1.5 px-4 rounded-full text-xs font-semibold uppercase tracking-wider inline-block">
+              {content.heroSubtitle}
+            </span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-4xl sm:text-6xl font-extrabold mb-6 text-white tracking-tight leading-tight max-w-4xl mx-auto text-shadow"
+          >
+            {content.heroTitle}
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto mb-10 text-shadow-sm font-light"
+          >
+            {content.heroDescription}
+          </motion.p>
+
+          {/* Booking Widget */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="w-full max-w-4xl mx-auto bg-white/95 backdrop-blur-md p-4 sm:p-6 rounded-2xl shadow-2xl border border-white/20 grid grid-cols-1 sm:grid-cols-4 gap-4"
+          >
+            <div className="flex flex-col text-left">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5 flex items-center gap-1">
+                <MapPin className="w-3.5 h-3.5 text-[#294050]" />
+                {isAmharic ? "አካባቢ" : "Destination"}
+              </label>
+              <Select onValueChange={setLocation} value={location}>
+                <SelectTrigger className="w-full bg-slate-50 border-slate-200 text-slate-800 rounded-xl h-12 focus:ring-[#294050]">
+                  <SelectValue placeholder={isAmharic ? "አካባቢዎችን ይምረጡ" : "Select location"} />
+                </SelectTrigger>
+                <SelectContent className="bg-white border border-slate-200">
+                  {internationalDestinations.map((dest, index) => (
+                    <SelectItem key={index} value={dest}>
+                      {dest}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="flex flex-col text-left">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5 flex items-center gap-1">
+                <Users className="w-3.5 h-3.5 text-[#294050]" />
+                {isAmharic ? "አይነት" : "Trip Type"}
+              </label>
+              <Select onValueChange={setBookingType} value={bookingType}>
+                <SelectTrigger className="w-full bg-slate-50 border-slate-200 text-slate-800 rounded-xl h-12 focus:ring-[#294050]">
+                  <SelectValue placeholder={isAmharic ? "የጉዞ አይነት" : "Booking type"} />
+                </SelectTrigger>
+                <SelectContent className="bg-white border border-slate-200">
+                  <SelectItem value="flight">{isAmharic ? "በረራ" : "Flight"}</SelectItem>
+                  <SelectItem value="hotel">{isAmharic ? "ሆቴል" : "Hotel"}</SelectItem>
+                  <SelectItem value="tour">{isAmharic ? "ጉብኝት" : "Tour"}</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="flex flex-col text-left">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5 flex items-center gap-1">
+                <Calendar className="w-3.5 h-3.5 text-[#294050]" />
+                {isAmharic ? "ቀን" : "Departure"}
+              </label>
+              <Input
+                type="date"
+                className="w-full bg-slate-50 border-slate-200 text-slate-800 rounded-xl h-12 focus:ring-[#294050]"
+                value={dateFrom}
+                onChange={(e) => setDateFrom(e.target.value)}
+              />
+            </div>
+
+            <div className="flex items-end">
+              <Button
+                onClick={handleBook}
+                className="w-full bg-[#294050] text-[#C8DDD8] hover:bg-[#1a2e3a] hover:text-[#C8DDD8] h-12 rounded-xl font-semibold transition-all duration-300 shadow-md flex items-center justify-center gap-2"
+              >
+                {content.book}
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Main Container */}
+      <div className="container mx-auto px-6 py-20 space-y-32">
+        {/* Popular Tours Section */}
+        <section className="relative">
+          <PopularTours isAmharic={isAmharic} />
+        </section>
+
+        {/* About Section */}
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="space-y-6">
+            <span className="section-badge">{isAmharic ? "ስለ እኛ" : "Who We Are"}</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1a2e3a] tracking-tight leading-tight">
               {content.aboutUs}
             </h2>
-            <p className="text-gray-700 mb-6">{content.aboutUsDescription}</p>
-            <Link to="/about">
-              <Button className="bg-[#294050] text-[#C8DDD8] hover:bg-[#C8DDD8] hover:text-[#294050] hover:bg-opacity-90">
-                {content.moreAboutUs}
-              </Button>
-            </Link>
+            <p className="text-slate-600 leading-relaxed text-lg font-light">
+              {content.aboutUsDescription}
+            </p>
+            <div className="pt-4">
+              <button onClick={() => scrollToSection('about')}>
+                <Button className="btn-primary">
+                  {content.moreAboutUs}
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </button>
+            </div>
           </div>
-          <div className="md:w-1/2">
+          <div className="relative group">
+            <div className="absolute inset-0 bg-[#e0cd95]/10 rounded-3xl transform rotate-3 scale-102 group-hover:rotate-0 transition-transform duration-500 -z-10" />
             <img
-              src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1635&q=80"
-              alt="About Us"
-              className="w-full h-64 object-cover rounded-lg"
+              src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1635&q=80"
+              alt="Beautiful Destination"
+              className="w-full h-[400px] object-cover rounded-3xl shadow-xl transition-transform duration-500 group-hover:scale-[1.02]"
             />
           </div>
-        </div>
+        </section>
 
-        <PopularTours isAmharic={isAmharic} />
+        {/* Why Choose Us Section */}
+        <section className="text-center space-y-12">
+          <div className="space-y-4">
+            <span className="section-badge">{isAmharic ? "ምርጥ ምርጫ" : "The Roha Advantage"}</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1a2e3a] tracking-tight">
+              {content.whyChooseUs}
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {content.whyChooseUsList.map((reason, index) => (
+              <Card key={index} className="bg-white border border-slate-100 card-hover rounded-2xl p-4 shadow-sm">
+                <CardContent className="p-6 text-center space-y-4">
+                  <div className="mx-auto w-14 h-14 rounded-full bg-[#C8DDD8]/40 flex items-center justify-center text-[#294050] font-bold text-xl">
+                    <CheckCircleIcon className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-xl font-bold text-[#1a2e3a]">
+                    {reason.title}
+                  </h3>
+                  <p className="text-slate-500 font-light text-sm leading-relaxed">{reason.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
 
-        <h2 className="text-3xl font-bold text-center mb-12 text-black">
-          {content.whyChooseUs}
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {content.whyChooseUsList.map((reason, index) => (
-            <Card key={index} className="bg-white border border-gray-200">
-              <CardContent className="p-6">
-                <CheckCircleIcon className="h-12 w-12 text-[#294050] mb-4" />
-                <h3 className="text-xl font-semibold text-black mb-2">
-                  {reason.title}
-                </h3>
-                <p className="text-gray-600">{reason.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        {/* Carousel / Travel Photos */}
+        <section className="space-y-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <span className="section-badge">{isAmharic ? "ጋለሪ" : "Inspiration"}</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1a2e3a] tracking-tight mt-2">
+                {isAmharic ? "የጉዞ ፎቶዎች" : "Travel Captures"}
+              </h2>
+            </div>
+            <button onClick={() => scrollToSection('gallery')} className="text-[#294050] font-semibold hover:underline flex items-center gap-1 text-sm">
+              {isAmharic ? "ሙሉውን ማህደር ይመልከቱ" : "View Full Gallery"}
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+          <div className="relative rounded-3xl overflow-hidden shadow-xl bg-slate-900 py-4">
+            <ImageCarousel images={carouselImages} />
+          </div>
+        </section>
 
-        <h2 className="text-3xl font-bold text-center mb-12 text-black">
-          {content.testimonials}
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {content.testimonialsList.map((testimonial, index) => (
-            <Card key={index} className="bg-white border border-gray-200">
-              <CardContent className="p-6">
-                <div className="flex items-center mb-4">
-                  {renderStars(testimonial.rating)}
+        {/* Services Grid */}
+        <section className="space-y-12">
+          <div className="text-center space-y-4">
+            <span className="section-badge">{isAmharic ? "አገልግሎቶች" : "What We Do"}</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1a2e3a] tracking-tight">
+              {isAmharic ? "የእኛ አገልግሎቶች" : "Our Services"}
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            {content.services.map((service, index) => (
+              <Card key={index} className="bg-white border border-slate-100 card-hover rounded-2xl shadow-sm flex flex-col justify-between">
+                <CardContent className="p-6 space-y-4 flex-grow">
+                  <div className="w-12 h-12 rounded-xl bg-[#294050]/10 flex items-center justify-center text-[#294050]">
+                    {service.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-[#1a2e3a] mb-1">{service.title}</h3>
+                    <p className="text-slate-400 text-xs font-light">{service.desc}</p>
+                  </div>
+                </CardContent>
+                <div className="p-6 pt-0">
+                  <button onClick={() => scrollToSection('booking')} className="w-full">
+                    <Button className="w-full bg-[#294050]/5 hover:bg-[#294050] text-[#294050] hover:text-[#C8DDD8] font-semibold py-2 rounded-xl transition-all duration-300 border-none shadow-none text-xs">
+                      {isAmharic ? "ቦታ ይያዙ" : "Book Now"}
+                    </Button>
+                  </button>
                 </div>
-                <p className="text-black mb-4">"{testimonial.comment}"</p>
-                <p className="text-black font-semibold">- {testimonial.name}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+              </Card>
+            ))}
+          </div>
+        </section>
 
-        <h2 className="text-3xl font-bold text-center mb-12 text-black">
-          {isAmharic ? "የእኛ አገልግሎቶች" : "Our Services"}
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-16">
-          {content.services.map((service, index) => (
-            <Card key={index} className="bg-white border border-gray-200">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-black">
-                  {service.icon}
-                  <span>{service.title}</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Link to="/booking">
-                  <Button className="w-full bg-[#294050] text-[#C8DDD8] hover:bg-[#C8DDD8] hover:text-[#294050] hover:bg-opacity-90">
-                    {isAmharic ? "ቦታ ይያዙ" : "Book Now"}
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        {/* Testimonials */}
+        <section className="space-y-12">
+          <div className="text-center space-y-4">
+            <span className="section-badge">{isAmharic ? "አስተያየቶች" : "Stories"}</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1a2e3a] tracking-tight">
+              {content.testimonials}
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {content.testimonialsList.map((item, index) => (
+              <Card key={index} className="bg-white border border-slate-100 rounded-2xl shadow-sm p-6 space-y-6 relative">
+                <div className="flex items-center gap-1">
+                  {renderStars(item.rating)}
+                </div>
+                <p className="text-slate-600 leading-relaxed font-light italic text-sm">
+                  "{item.comment}"
+                </p>
+                <div className="flex items-center gap-3 pt-4 border-t border-slate-100">
+                  <div className="w-10 h-10 rounded-full bg-[#294050]/10 flex items-center justify-center font-bold text-[#294050] text-sm">
+                    {item.name.charAt(0)}
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-[#1a2e3a]">{item.name}</h4>
+                    <p className="text-xs text-slate-400 font-light">{item.role}</p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );

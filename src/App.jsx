@@ -31,43 +31,53 @@ const App = () => {
             <Header isAmharic={isAmharic} toggleLanguage={toggleLanguage} />
             <main className="flex-grow bg-white relative">
               <div className="relative z-10">
-                <Routes>
-                  {navItems.map(({ to, page }) => (
-                    <Route
-                      key={to}
-                      path={to}
-                      element={React.cloneElement(page, { isAmharic })}
-                    />
-                  ))}
-                  <Route
-                    path="/destinations"
-                    element={<Destinations isAmharic={isAmharic} />}
-                  />
-                  <Route
-                    path="/booking"
-                    element={<Booking isAmharic={isAmharic} />}
-                  />
-                  <Route
-                    path="/travel-tips"
-                    element={<TravelTips isAmharic={isAmharic} />}
-                  />
-                  <Route
-                    path="/travel-guide"
-                    element={<TravelGuide isAmharic={isAmharic} />}
-                  />
-                  <Route
-                    path="/faqs"
-                    element={<FAQs isAmharic={isAmharic} />}
-                  />
-                  <Route
-                    path="/gallery"
-                    element={<Gallery isAmharic={isAmharic} />}
-                  />
-                  <Route
-                    path="*"
-                    element={<Navigate to="/destinations" />}
-                  />
-                </Routes>
+                <div className="flex flex-col">
+                  {/* Home Section */}
+                  <section id="home">
+                    {React.cloneElement(navItems.find(item => item.to === '/').page, { isAmharic })}
+                  </section>
+                  
+                  {/* About Section */}
+                  <section id="about">
+                    {React.cloneElement(navItems.find(item => item.to === '/about').page, { isAmharic })}
+                  </section>
+                  
+                  {/* Services Section */}
+                  <section id="services">
+                    {React.cloneElement(navItems.find(item => item.to === '/services').page, { isAmharic })}
+                  </section>
+
+                  {/* Destinations Section */}
+                  <section id="destinations">
+                    <Destinations isAmharic={isAmharic} />
+                  </section>
+
+                  {/* Gallery Section */}
+                  <section id="gallery">
+                    {React.cloneElement(navItems.find(item => item.to === '/gallery').page, { isAmharic })}
+                  </section>
+                  
+                  {/* Contact Section */}
+                  <section id="contact">
+                    {React.cloneElement(navItems.find(item => item.to === '/contact').page, { isAmharic })}
+                  </section>
+
+                  {/* Booking Section */}
+                  <section id="booking">
+                    <Booking isAmharic={isAmharic} />
+                  </section>
+
+                  {/* Other Sections (optional or at bottom) */}
+                  <section id="travel-tips">
+                    <TravelTips isAmharic={isAmharic} />
+                  </section>
+                  <section id="travel-guide">
+                    <TravelGuide isAmharic={isAmharic} />
+                  </section>
+                  <section id="faqs">
+                    <FAQs isAmharic={isAmharic} />
+                  </section>
+                </div>
               </div>
             </main>
             <Footer isAmharic={isAmharic} />
