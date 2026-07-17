@@ -268,7 +268,7 @@ const Index = ({ isAmharic }) => {
           </div>
         </section>
 
-        {/* Carousel / Travel Photos */}
+        {/* Travel Captures — Bento Grid */}
         <section className="space-y-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
@@ -282,8 +282,42 @@ const Index = ({ isAmharic }) => {
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
-          <div className="relative rounded-3xl overflow-hidden shadow-xl bg-slate-900 py-4">
-            <ImageCarousel images={carouselImages} />
+
+          <div className="grid grid-cols-3 grid-rows-2 gap-2 h-[480px] md:h-[560px] rounded-2xl overflow-hidden">
+            {/* Row 1, Col 1: Large left tile spanning 2 rows */}
+            <div className="relative col-span-1 row-span-2 group overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80" alt="Dolomite Alps" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+              <span className="absolute bottom-4 left-4 text-white font-bold text-lg drop-shadow-lg">Dolomite Alps</span>
+            </div>
+
+            {/* Row 1, Col 2: Iceland */}
+            <div className="relative col-span-1 row-span-1 group overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=600&q=80" alt="Iceland" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+              <span className="absolute bottom-3 left-3 text-white font-bold text-base drop-shadow-lg">Iceland</span>
+            </div>
+
+            {/* Row 1, Col 3: Ethiopia */}
+            <div className="relative col-span-1 row-span-1 group overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=600&q=80" alt="Ethiopia" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+              <span className="absolute bottom-3 left-3 text-white font-bold text-base drop-shadow-lg">Ethiopia</span>
+            </div>
+
+            {/* Row 2, Col 2: Nepal */}
+            <div className="relative col-span-1 row-span-1 group overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1537225228614-56cc3556d7ed?auto=format&fit=crop&w=600&q=80" alt="Nepal" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+              <span className="absolute bottom-3 left-3 text-white font-bold text-base drop-shadow-lg">Nepal</span>
+            </div>
+
+            {/* Row 2, Col 3: New Zealand */}
+            <div className="relative col-span-1 row-span-1 group overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80" alt="New Zealand" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+              <span className="absolute bottom-3 left-3 text-white font-bold text-base drop-shadow-lg">New Zealand</span>
+            </div>
           </div>
         </section>
 
