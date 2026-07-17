@@ -43,13 +43,13 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Lato', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Lora', Georgia, serif;
   }
 }
 
